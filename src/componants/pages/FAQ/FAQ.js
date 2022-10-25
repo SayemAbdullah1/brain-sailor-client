@@ -1,9 +1,12 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const FAQ = () => {
     return (
         <div>
-            <h2>This is Faq</h2>
+            <Container>
+                <h2>This is Faq</h2>
+            </Container>
         </div>
     );
 };

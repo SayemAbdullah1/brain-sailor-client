@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(authContext)
+    const { createUser, updateUserProfile } = useContext(authContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
@@ -21,19 +21,28 @@ const Register = () => {
 
         console.log(name, photoURL, email, password)
 
-        createUser(email, password)
+        createUser( email, password)
         .then((result) =>{
             const user = result.user;
             setError('')
             navigate('/')
+            handleUpdateUserProfile(name, photoURL)
             console.log(user)
         })
         .catch((error)=>{
             console.error(error)
             setError(error.message)
         })
+    }
 
-
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch((error) => console.error(error))
     }
 
 
