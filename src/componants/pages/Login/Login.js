@@ -7,7 +7,7 @@ import { authContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
-    const { login } = useContext(authContext)
+    const { login, googleLogin, GithubLogin } = useContext(authContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
@@ -31,6 +31,30 @@ const Login = () => {
                 setError(error.message)
             })
 
+    }
+
+    const handleGoogleLogin = ()=>{
+        googleLogin()
+            .then((result) => {
+                const user = result.user;
+                navigate('/')
+                console.log(user)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
+
+    const handleGithubLogin = ()=>{
+        GithubLogin()
+        .then((result) => {
+            const user = result.user;
+            navigate('/')
+            console.log(user)
+        })
+    .catch((error) => {
+        console.error(error)
+    })
     }
 
 
@@ -60,10 +84,10 @@ const Login = () => {
                     </Button>
                     <small className='text-danger'>{error}</small>
                 </Form>
-                <Button className='mt-2 w-100' variant="secondary">
+                <Button onClick={handleGoogleLogin} className='mt-2 w-100' variant="secondary">
                     Google Login
                 </Button>
-                <Button className='mt-2 w-100' variant="dark" >
+                <Button onClick={handleGithubLogin} className='mt-2 w-100' variant="dark" >
                     Github Login
                 </Button>
             </div>
