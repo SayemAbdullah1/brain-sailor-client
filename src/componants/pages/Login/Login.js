@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { authContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
+    const { login } = useContext(authContext)
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+
+    const handleLogin =(event)=>{
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log( email, password)
+
+        login(email, password)
+            .then((result) => {
+                const user = result.user;
+                setError('')
+                navigate('/')
+                console.log(user)
+            })
+            .catch((error) => {
+                console.error(error)
+                setError(error.message)
+            })
+
+    }
+
+
+
     return (
         <div className='row'>
             <div className=' mx-auto mt-5 border p-4 col-lg-3'>
                 <h2 className='text-primary fw-bold text-center'>Login</h2>
-                <Form>
+                <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" name='email' placeholder="Enter email" required />
@@ -28,7 +58,14 @@ const Login = () => {
                     <Button className='mt-2' variant="primary" type="submit">
                         Login
                     </Button>
+                    <small className='text-danger'>{error}</small>
                 </Form>
+                <Button className='mt-2 w-100' variant="secondary">
+                    Google Login
+                </Button>
+                <Button className='mt-2 w-100' variant="dark" >
+                    Github Login
+                </Button>
             </div>
       </div>
     );
