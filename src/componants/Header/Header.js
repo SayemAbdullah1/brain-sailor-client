@@ -4,11 +4,11 @@ import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { authContext } from '../Contexts/AuthProvider/AuthProvider';
 import logo from './../Others/images/logo.png'
 import { FaUser } from 'react-icons/fa';
+import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useContext(authContext)
@@ -17,7 +17,7 @@ const Header = () => {
         logOut()
     }
     return (
-        <div>
+        <div className='header'>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
                     <Navbar.Brand>
@@ -34,22 +34,22 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                            <Nav.Link><Link to='/courses'>Courses</Link></Nav.Link>
-                            <Nav.Link><Link to='/FAQ'>FAQ</Link></Nav.Link>
-                            <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
+                            <Nav.Link><Link to='/' className='option'>Home</Link></Nav.Link>
+                            <Nav.Link><Link to='/courses' className='option'>Courses</Link></Nav.Link>
+                            <Nav.Link><Link to='/FAQ' className='option'>FAQ</Link></Nav.Link>
+                            <Nav.Link><Link to='/blog' className='option'>Blog</Link></Nav.Link>
                            
                         </Nav>
                         <>
                         {
                             user?.uid ?
                             <>
-                            <Button className='pe-3' onClick={handleLogOut} variant="light" size="sm"><Nav.Link><Link  to='/'>LogOut</Link></Nav.Link></Button>
+                            <Button className='pe-3 me-2' onClick={handleLogOut} variant="light" size="sm"><Nav.Link><Link  to='/'>LogOut</Link></Nav.Link></Button>
                             </>
                             :
                             <>
-                            <Nav.Link><Link className='pe-3' to='/login'>Login</Link></Nav.Link>
-                            <Nav.Link><Link className='pe-3' to='/register'>Register</Link></Nav.Link>
+                            <Nav.Link><Link className='pe-3 me-3 option' to='/login'>Login</Link></Nav.Link>
+                            <Nav.Link><Link className='pe-3 option me-2' to='/register'>Register</Link></Nav.Link>
                             </>
                         }
 

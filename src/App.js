@@ -3,6 +3,7 @@ import './App.css';
 import { route } from './routes/Route';
 
 function App() {
+
   return (
     <div>
       <RouterProvider router={route}></RouterProvider>

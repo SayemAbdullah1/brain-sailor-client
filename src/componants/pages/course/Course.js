@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Course = ({course}) => {
     const { title, image_url, details } = course
@@ -11,6 +12,9 @@ const Course = ({course}) => {
                         <Image style={{height: '150px'}} src={image_url} className="card-img-top" alt="..."/>
                             <div className="card-body">
                                 <h5 className="card-title">{title}</h5>
+                                <p>{details.slice(0, 60) + '...'}</p>
+                        <Link href="#" class="btn btn-primary">Go somewhere</Link>
+
                             </div>
                     </div>
                 </div>

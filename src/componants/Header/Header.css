@@ -1,0 +1,15 @@
+.header a{
+    text-decoration: none;
+}
+.option{
+    border: none;
+        outline: none;
+        padding: 4px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+}
+
+.option:hover {
+    background-color: #666;
+    color: white;
+}
