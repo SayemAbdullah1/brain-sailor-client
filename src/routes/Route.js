@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import ErrorPage from '../componants/errorPage/ErrorPage';
 import Blog from '../componants/pages/Blog/Blog';
 import Courses from '../componants/pages/Courses/Courses';
 import FAQ from '../componants/pages/FAQ/FAQ';
@@ -11,6 +12,7 @@ import Main from '../layout/Main/Main';
 export const route = createBrowserRouter([
     {
         path: '/', 
+        errorElement: <ErrorPage></ErrorPage>,
         element: <Main></Main>, 
         children:[
             {

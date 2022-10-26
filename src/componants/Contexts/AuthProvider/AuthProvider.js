@@ -10,26 +10,32 @@ export const authContext = createContext()
 const auth = getAuth(app)
 
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null)
     const googleProvider = new GoogleAuthProvider()
     const githubLoginProvider = new GithubAuthProvider()
+
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 //create new user..........
     const createUser = (email, password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     //uaer login 
     const login = (email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     //google login with popup
     const googleLogin = ()=>{
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     
     //Github login with popup
     const GithubLogin = ()=>{
+        setLoading(true)
         return signInWithPopup(auth, githubLoginProvider)
     }
 
@@ -47,6 +53,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser)
+            setLoading(false)
         })
         return ()=>{
             unsubscribe()
