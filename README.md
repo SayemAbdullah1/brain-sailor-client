@@ -12,6 +12,7 @@ feature of my project:
 List of tecnology uses:
 -> css
 -> javaScript
+-> Firebase
 
 uses of framwork:
 -> bootstrap
