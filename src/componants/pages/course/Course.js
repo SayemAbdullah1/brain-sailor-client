@@ -15,7 +15,7 @@ const Course = ({course}) => {
                                 <h5 className="card-title">{title}</h5>
                                 <p>{details.slice(0, 60) + '...'}</p>
                         <Link to={`/course/${_id}`}>
-                        <button className="btn btn-primary">Course detaild</button>
+                        <button className="btn btn-primary">Course details</button>
                         </Link>
 
                             </div>

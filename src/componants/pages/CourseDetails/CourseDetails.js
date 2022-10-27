@@ -4,8 +4,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const CourseDetails = () => {
     const courseDetaild = useLoaderData()
-    console.log(courseDetaild)
-    const { title, image_url, details } = courseDetaild
+    // console.log(courseDetaild)
+    const { _id, title, image_url, details } = courseDetaild
     return (
         <div className='mt-5'>
             <Container>
@@ -17,11 +17,11 @@ const CourseDetails = () => {
                         {title}
                     </div>
                     <div className="card-body">
-                            <Image class="card-img-top img-fluid w-100" src={image_url} alt="Card image cap" />
+                            <Image className="card-img-top img-fluid w-100" src={image_url} alt="Card image cap" />
                         <p className="card-text">{details}</p>
                     </div>
                     <div className="card-footer">
-                            <Link className="btn btn-primary" to='/checkout' >Get premium</Link>
+                            <Link className="btn btn-primary" to={`/checkout/${_id}`} >Get premium</Link>
                     </div>
                 </div>
             </div>
