@@ -55,13 +55,15 @@ const Header = () => {
 
                             <Nav.Link eventKey={2}>
                                 {
-                                    user?.photoURL ?
+                                    user?.photoURL || user?.displayName ?
                                         
+                                        <div data-toggle="tooltip" data-placement="bottom" title={user?.displayName}>
                                             <Image
                                                 src={user?.photoURL}
                                                 roundedCircle
                                                 style={{ height: '40px' }}
                                             ></Image>
+                                            </div>
 
                                         :
                                         <FaUser></FaUser>

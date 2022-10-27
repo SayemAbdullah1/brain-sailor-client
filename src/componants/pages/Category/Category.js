@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import './Category.css'
 
 const Category = () => {
+
+    // console.log(courses)
+    // const { _id } = course;
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -19,7 +22,7 @@ const Category = () => {
                 {
                     categories.map(category =>
                         <p key={category.id}>
-                            <Link className='category' to={`/category/${category.id}`}>{category.name}</Link>
+                            <Link className='category'>{category.name}</Link>
                         </p>)
                 }
             </div>
