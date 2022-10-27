@@ -17,11 +17,11 @@ const CourseDetails = () => {
                         {title}
                     </div>
                     <div className="card-body">
-                        <Image class="card-img-top image-fluid" src={image_url} alt="Card image cap" />
+                            <Image class="card-img-top img-fluid w-100" src={image_url} alt="Card image cap" />
                         <p className="card-text">{details}</p>
                     </div>
                     <div className="card-footer">
-                        <Link className="btn btn-primary">Get premium</Link>
+                            <Link className="btn btn-primary" to='/checkout' >Get premium</Link>
                     </div>
                 </div>
             </div>

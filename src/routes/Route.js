@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../componants/errorPage/ErrorPage';
 import Blog from '../componants/pages/Blog/Blog';
 import Category from '../componants/pages/Category/Category';
+import CheckOut from '../componants/pages/CheckOut/CheckOut';
 import Course from '../componants/pages/course/Course';
 import CourseDetails from '../componants/pages/CourseDetails/CourseDetails';
 import Courses from '../componants/pages/Courses/Courses';
@@ -11,6 +12,7 @@ import Home from '../componants/pages/Home/Home';
 import Login from '../componants/pages/Login/Login';
 import Register from '../componants/pages/Register/Register';
 import Main from '../layout/Main/Main';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const route = createBrowserRouter([
     {
@@ -27,14 +29,13 @@ export const route = createBrowserRouter([
                 loader: () => fetch(`http://localhost:5000/courses/`)
             },
             {
-                path: '/courses',
-                element: <Courses></Courses>,
-                loader: () => fetch(`http://localhost:5000/courses/`)
-            },
-            {
                 path: '/course/:id', 
                 element: <CourseDetails></CourseDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+            },
+            {
+                path:'/checkout',
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             
             {
